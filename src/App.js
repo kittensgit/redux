@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import { addCashAction, getCashAction } from './store/cashReducer';
 import { addCustomersAction, removeCustomersAction } from './store/customerReducer';
+import { fetchCustomers } from './asyncAction';
 
 function App() {
 
@@ -35,8 +36,9 @@ function App() {
       <button onClick={() => addCash(Number(prompt()))}>add cash</button>
       <button onClick={() => getCash(Number(prompt()))}>get cash</button>
       <button onClick={() => addCustomer(prompt())}>add customer</button>
+      <button onClick={() => dispatch(fetchCustomers())}>add many customers</button>
       {customers.length > 0
-        ? customers.map(customer => <div onClick={()=>removeCustomer(customer.id)}>
+        ? customers.map(customer => <div onClick={() => removeCustomer(customer.id)}>
           {customer.name}
         </div>)
         : <div>customers no found</div>
