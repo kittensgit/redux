@@ -1,12 +1,13 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { cashReducer } from './cashReducer';
-import { customerReducer } from './customerReducer'
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+import { countReducer } from './countReducer';
+import { usersReducer } from './usersReducer';
+import createSagaMiddleware from 'redux-saga'
+
+const sagaMiddleWare = createSagaMiddleware()
 
 const rootReducer = combineReducers({
-    cash: cashReducer,
-    customers: customerReducer
+    countReducer,
+    usersReducer
 })
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+export const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare))
