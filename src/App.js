@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import { AsyncDecrementAction, AsyncIcrementAction } from './store/countReducer';
+import { fetchUsersAction } from './store/usersReducer';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
       <div style={{ fontSize: '3rem' }}>{count}</div>
       <button onClick={() => { dispatch(AsyncIcrementAction()) }}>increment</button>
       <button onClick={() => { dispatch(AsyncDecrementAction()) }}>decrement</button>
-      <button>add users</button>
+      <button onClick={() => { dispatch(fetchUsersAction()) }}>add users</button>
       {users.length > 0
         ? users.map(user => <div>
           {user.name}

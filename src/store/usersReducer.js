@@ -1,4 +1,5 @@
 const SET_USERS = 'SET_USERS';
+export const FETCH_USERS = 'FETCH_USERS';
 
 let defaultState = {
     users: []
@@ -14,3 +15,4 @@ export const usersReducer = (state = defaultState, action) => {
 }
 
 export const setUsersAction = (payload) => ({ type: SET_USERS, payload })
+export const fetchUsersAction = () => ({ type: FETCH_USERS })
